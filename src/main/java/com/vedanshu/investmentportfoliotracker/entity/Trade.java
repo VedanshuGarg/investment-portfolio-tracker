@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "trades")
 public class Trade {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,5 +38,21 @@ public class Trade {
         this.quantity = quantity;
         this.pricePerShare = pricePerShare;
         this.tradeDate = tradeDate;
+    }
+
+    public String getTickerSymbol() {
+        return tickerSymbol;
+    }
+
+    public TradeType getTradeType() {
+        return tradeType;
+    }
+
+    public BigDecimal getQuantity() {
+        return quantity;
+    }
+
+    public BigDecimal getPricePerShare() {
+        return pricePerShare;
     }
 }
