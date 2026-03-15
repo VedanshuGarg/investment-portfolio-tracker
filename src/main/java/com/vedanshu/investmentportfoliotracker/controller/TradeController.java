@@ -1,5 +1,6 @@
 package com.vedanshu.investmentportfoliotracker.controller;
 
+import com.vedanshu.investmentportfoliotracker.dto.PortfolioValuationResponse;
 import com.vedanshu.investmentportfoliotracker.entity.Trade;
 import com.vedanshu.investmentportfoliotracker.service.TradeService;
 import org.springframework.http.HttpStatus;
@@ -55,5 +56,16 @@ public class TradeController {
     @GetMapping("/portfolio/holdings")
     public ResponseEntity<Map<String, BigDecimal>> getPortfolioHoldings() {
         return ResponseEntity.ok(tradeService.getPortfolioHoldings());
+    }
+
+    /**
+     * Endpoint to calculate the real-time monetary value of the portfolio.
+     * Integrates with external market data providers for live pricing.
+     *
+     * @return a ResponseEntity containing the detailed portfolio valuation
+     */
+    @GetMapping("/portfolio/valuation")
+    public ResponseEntity<PortfolioValuationResponse> getPortfolioValuation() {
+        return ResponseEntity.ok(tradeService.getLivePortfolioValuation());
     }
 }
